@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+
+    <!--    Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300&display=swap" rel="stylesheet">
+
+    <title>Samadhi Yoga</title>
+</head>
+<body>
+
+<div class="titles">
+    <h1 class="samatitle">Samadhi</h1>
+    <h3 class="samasubtitle">Centro de yoga</h3>
+</div>
+
+{% block content %}
+
+    <div class="ingreso">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="{{ form.username.html_name }}">
+            <label for="floatingInput">Usuario</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="{{ form.password.html_name }}">
+            <label for="floatingPassword">Password</label>
+        </div>
+        <div class="buttonHolder">
+            <input type="submit" class="btn btn-outline-success" value="login"/>
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </div>
+        </form>
+    {% if form.errors %}
+        <p>Tu usuario y contraseña no coinciden, intentalo de nuevo.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+                please login with an account that has access.</p>
+        {% else %}
+            <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+    </div>
+
+
+    </body>
+
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+{#    <p><a href="{% url 'password_reset' %}">Lost password?</a></p>#}
+
+{% endblock %}
+
+
+{% include "foot.html" %}

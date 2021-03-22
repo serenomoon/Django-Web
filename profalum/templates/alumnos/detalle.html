@@ -1,0 +1,57 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detalle.css' %}">
+    <title>Detalle Alumno</title>
+{% endblock extra_css %}
+
+
+
+<div class="titles">
+    <h1 class="samatitle"> {{ alumno.nombre }} {{ alumno.apellido }}</h1>
+</div>
+
+<div class="cont-table">
+    <table class="styled-table">
+        <tr>
+            <th>ID</th>
+            <td>{{ alumno.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ alumno.nombre }}</td>
+        </tr>
+        <tr>
+            <th>Apellido</th>
+            <td>{{ alumno.apellido }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ alumno.email }}</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <td>{{ alumno.telefono }}</td>
+        </tr>
+        <tr>
+            <th>Direccion</th>
+            <td>{{ alumno.direccion }} {{ alumno.direccion_n }} {{ alumno.depto }}</td>
+        </tr>
+        <tr>
+            <th>DNI</th>
+            <td>{{ alumno.dni }}</td>
+        </tr>
+        <tr>
+            <th>Fecha/Nac</th>
+            <td>{{ alumno.fecha_nac }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="volver-button">
+    <a class="btn btn-outline-success" href="{% url 'alumnos' %}">Volver</a>
+</div>
+
+
+
+{% include "foot.html" %}

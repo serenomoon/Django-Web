@@ -1,0 +1,35 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <title>Home</title>
+{% endblock %}
+
+<div class="cont-table">
+
+    <h3 class="samasubtitle"> Crear una nota </h3>
+
+    <form class="edit-form" method="POST">
+        <table class="table-form">
+            {{ formaNota }}
+        </table>
+        <div class="form-button">
+            <button type="submit" class="btn btn-outline-success">Agregar</button>
+        </div>
+        {% csrf_token %}
+    </form>
+
+</div>
+
+<div class="placas-div">
+    {% for nota in notas %}
+        <div class="placas">
+            <p class="placa-text">{{ nota.nota }}</p>
+            <div class="trash">
+                <p class="time">{{ nota.fecha }}</p>
+                <a href="home_eliminar/{{ nota.id }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% include "foot.html" %}

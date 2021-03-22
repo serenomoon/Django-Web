@@ -1,0 +1,78 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/alumnos.css' %}">
+    <title>Lista de Alumnos</title>
+{% endblock extra_css %}
+
+
+<div class="titles">
+    <h1 class="samatitle">Crear ficha Alumnos </h1>
+    <h3 class="samasubtitle"> Selecciona los presentes </h3>
+</div>
+
+<div class="cont-table">
+    <form method="POST" id="form">
+        <table class="styled-table">
+            <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Presente</th>
+                <th>Sintomas</th>
+                <th>Temp</th>
+                <th>h/ingreso</th>
+                <th>h/egreso</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% csrf_token %}
+            {% for alumno in alumnos %}
+                <tr class="active-row">
+                    <td>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            {{ alumno.nombre }} {{ alumno.apellido }}
+                        </label>
+                    </td>
+                    <td>
+                        <input class="form-check-input" type="checkbox" value="{{ alumno.id }}" name="seleccionados">
+                    </td>
+                    <td>
+                        <input class="form-check-input sintomas" type="checkbox" value="No" name="sintomas{{ alumno.id }}" id="sintomas{{ alumno.id }}">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" maxlength="2" size="2" name="temp{{ alumno.id }}">
+                    </td>
+                    <td>
+                        <input type="time" class="form-control" name="hingreso{{ alumno.id }}">
+                    </td>
+                    <td>
+                        <input type="time" class="form-control" name="hegreso{{ alumno.id }}">
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="ingre-button-crear">
+            <button class="btn btn-outline-success" type="submit">Crear Fichas</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    let checkboxes = document.getElementsByClassName("sintomas");
+    for (let i = 0; i < checkboxes.length; i++) {
+        let check = document.getElementById(checkboxes[i].id)
+        check.addEventListener('change', function () {
+            if (this.checked) {
+                check.value = "Si";
+            } else {
+                check.value = "No";
+            }
+        });
+    }
+
+</script>
+
+
+{% include "foot.html" %}

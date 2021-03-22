@@ -1,0 +1,65 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detalle.css' %}">
+    <title>Detalle Profesor</title>
+{% endblock extra_css %}
+
+
+
+<div class="titles">
+    <h1 class="samatitle"> {{ profesor.nombre }} {{ profesor.apellido }}</h1>
+</div>
+
+<div class="cont-table">
+    <table class="styled-table">
+        <tr>
+            <th>ID</th>
+            <td>{{ profesor.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre</th>
+            <td>{{ profesor.nombre }}</td>
+        </tr>
+        <tr>
+            <th>Apellido</th>
+            <td>{{ profesor.apellido }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ profesor.email }}</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <td>{{ profesor.telefono }}</td>
+        </tr>
+        <tr>
+            <th>Direccion</th>
+            <td>{{ profesor.direccion }} {{ profesor.direccion_n }} {{ profesor.depto }}</td>
+        </tr>
+        <tr>
+            <th>DNI</th>
+            <td>{{ profesor.dni }}</td>
+        </tr>
+        <tr>
+            <th>Fecha/Nac</th>
+            <td>{{ profesor.fecha_nac }}</td>
+        </tr>
+        <tr>
+            <th>Especializacion</th>
+            <td>{{ profesor.especializacion }}</td>
+        </tr>
+        <tr>
+            <th>Notas</th>
+            <td>{{ profesor.notas }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="volver-button">
+    <a class="btn btn-outline-success" href="{% url 'profesores' %}">Volver</a>
+</div>
+
+
+
+{% include "foot.html" %}

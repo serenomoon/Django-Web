@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% load static %}
+    {% block extra_css %}{% endblock %}
+
+    <!--    Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Samadhi</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if nbar == 'home' %}active{% endif %}" aria-current="page"
+                           href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if nbar == 'alumnos' %}active{% endif %}" href="{% url 'alumnos' %}">Alumnos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if nbar == 'profesores' %}active{% endif %}"
+                           href="{% url 'profesores' %}">Profesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if nbar == 'horarios' %}active{% endif %}" href="{% url 'horarios' %}">Horarios</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if nbar == 'asistencias' %}active{% endif %}" href="#"
+                           id="navbarDropdownMenuLink" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Asistencias
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'ver_fichas' %}">Ver fichas</a></li>
+                            <li><a class="dropdown-item" href="{% url 'crear_fichas' %}">Crear ficha</a></li>
+                        </ul>
+                    </li>
+                    <li class="navbar-brand">{{ user.get_username }}</li>
+                    <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--FIN NAVBAR-->

@@ -1,0 +1,31 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/nuevo.css' %}">
+    <title>Nuevo Profesor</title>
+{% endblock extra_css %}
+
+
+
+ <div class="titles">
+    <h1 class="samatitle">Nuevo Profesor</h1>
+</div>
+
+<div class="cont-table">
+
+    <form class="edit-form" method="POST">
+        <table class="table-form">
+            {{ formaProfesor }}
+        </table>
+        <div class="form-button">
+            <button type="submit" class="btn btn-outline-success">Agregar</button>
+        </div>
+        {% csrf_token %}
+    </form>
+
+</div>
+
+
+
+
+{% include "foot.html" %}

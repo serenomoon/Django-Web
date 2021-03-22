@@ -1,0 +1,14 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <title>Home</title>
+{% endblock %}
+
+{% block content %}
+<p>Logged out!</p>
+
+<a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}
+
+{% include "foot.html" %}

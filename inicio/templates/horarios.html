@@ -1,0 +1,68 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/alumnos.css' %}">
+    <title>Home</title>
+{% endblock %}
+
+<div class="titles">
+    <h1 class="samatitle">HORARIOS</h1>
+</div>
+
+<div class="cont-table">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Horario</th>
+            <th>Dia</th>
+            <th>Clase</th>
+            <th>Profesor</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for horario in horarios %}
+            <tr class="active-row">
+                <td>{{ horario.horario }}</td>
+                {% if horario.dia == '1' %}
+                    <td>Lunes</td>
+                {% elif horario.dia == '2' %}
+                    <td>Martes</td>
+                {% elif horario.dia == '3' %}
+                    <td>Miercoles</td>
+                {% elif horario.dia == '4' %}
+                    <td>Jueves</td>
+                {% elif horario.dia == '5' %}
+                    <td>Viernes</td>
+                {% elif horario.dia == '6' %}
+                    <td>Sabado</td>
+                {% elif horario.dia == '7' %}
+                    <td>Domingo</td>
+                {% endif %}
+                <td>{{ horario.clase }}</td>
+                <td>{{ horario.profesor }}</td>
+
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-success btn-secondary dropdown-toggle" type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Opciones
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="editar_horario/{{ horario.id }}">Editar</a>
+                                <a class="dropdown-item" href="eliminar_horario/{{ horario.id }}">Eliminar</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ingre-button">
+    <a class="btn btn-outline-success" href="nuevo_horario">Ingresar nuevo</a>
+</div>
+
+
+{% include "foot.html" %}

@@ -1,0 +1,113 @@
+body {
+    background: url("../img/fondo2.jpg") no-repeat;
+    background-size: 100% auto;
+    overflow: hidden;
+}
+
+.samasubtitle {
+    font-family: 'Dosis', sans-serif;
+    font-size: 2vw;
+    opacity: 0.8;
+}
+
+
+.cont-table {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+
+.table-form {
+    margin: 0 auto;
+}
+
+.form-button {
+    margin-top: 4px;
+}
+
+.placas-div {
+    margin: 0;
+    text-align: center;
+    overflow: auto;
+    height: 350px;
+}
+
+.placas {
+    background-color: orange;
+    display: inline-block;
+    margin: 1%;
+    height: 150px;
+    overflow: auto;
+    width: 17%;
+    position: relative;
+}
+
+
+.placa-text {
+    margin: 15px 15px;
+
+}
+
+.trash {
+    right: 10px;
+    bottom: auto;
+    position: absolute;
+}
+
+.time {
+    display: inline-block;
+    font-size: 0.9vw;
+    color: #815f09;
+}
+
+a:link {
+  color: darkgoldenrod;
+}
+
+a:hover {
+  color: red;
+}
+
+
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid #009879;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #009879;
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #198754;
+}
+
+
+/* Scrollbar styles notas */
+.placas::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.placas::-webkit-scrollbar-track {
+    border: 1px solid darkgoldenrod;
+    border-radius: 1px;
+}
+
+.placas::-webkit-scrollbar-thumb {
+    background: darkgoldenrod;
+    border-radius: 1px;
+}
+
+.placas::-webkit-scrollbar-thumb:hover {
+    background: red;
+}
+

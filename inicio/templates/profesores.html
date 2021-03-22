@@ -1,0 +1,57 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/alumnos.css' %}">
+    <title>Lista de Profesores</title>
+{% endblock extra_css %}
+
+
+
+<div class="titles">
+<h1 class="samatitle">Lista de Profesores</h1>
+<h3 class="samasubtitle">Numero de profesores: {{ no_profesores }}</h3>
+</div>
+
+
+<div class="cont-table">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for profesor in profesores %}
+            <tr class="active-row">
+                <td>{{ profesor.id }}</td>
+                <td>{{ profesor.nombre }} {{ profesor.apellido }}</td>
+                <td>{{ profesor.email }}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-success btn-secondary dropdown-toggle" type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Opciones
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="detalle_profesor/{{ profesor.id }}">Ver</a>
+                                <a class="dropdown-item" href="editar_profesor/{{ profesor.id }}">Editar</a>
+                                <a class="dropdown-item" href="eliminar_profesor/{{ profesor.id }}">Eliminar</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="ingre-button">
+    <a class="btn btn-outline-success" href="nuevo_profesor">Ingresar nuevo</a>
+</div>
+
+
+
+{% include "foot.html" %}

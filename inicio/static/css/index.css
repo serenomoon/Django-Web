@@ -1,0 +1,31 @@
+body {
+    background: url("../img/fondo2.jpg") no-repeat;
+    background-size: 100% auto;
+}
+
+.titles {
+    text-align: center;
+    margin-top: 8%;
+}
+
+.samatitle {
+    font-family: 'Dosis', sans-serif;
+    font-size: 6vw;
+    opacity: 0.8;
+}
+
+.samasubtitle {
+    font-family: 'Dosis', sans-serif;
+    font-size: 2vw;
+    opacity: 0.8;
+}
+
+.ingreso {
+    width: 20%;
+    margin: 3% auto;
+}
+
+.buttonHolder {
+    margin-top: 2%;
+    text-align: center;
+}

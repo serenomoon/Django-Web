@@ -1,0 +1,38 @@
+{% include "head.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/alumnos.css' %}">
+    <title>Ver Ficha</title>
+{% endblock %}
+
+<div class="titles">
+    <h1 class="samatitle">Fichas Creadas</h1>
+</div>
+
+<div class="cont-table">
+    <table class="styled-table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Hora</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ficha in fichas %}
+            <tr class="active-row">
+                <td>{{ ficha.nombre }}</td>
+                <td>{{ ficha.fecha }}</td>
+
+                <td>
+                    <div class="ingre-button">
+                        <a class="btn btn-success" href="eliminar_ficha/{{ ficha.id }}">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include "foot.html" %}
